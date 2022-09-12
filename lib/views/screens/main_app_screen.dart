@@ -15,7 +15,7 @@ class MainAppScreen extends StatefulWidget {
 }
 
 class _MainAppScreenState extends State<MainAppScreen> {
-  int index = 2;
+  int index = 0;
 
   List<Widget> screens = [
     HomeScreen(),
@@ -28,7 +28,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
     return Stack(
       children: [
         Scaffold(
-          appBar: const AppBarMain(),
+          appBar: AppBarMain(icon: null,),
           drawer: const Drawer(),
           body: screens[index],
           bottomNavigationBar: const BottomNavigationBarMain(),

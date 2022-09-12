@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/enuns/screens.dart';
+import 'package:pokedex/services/routes.dart';
 import 'package:pokedex/views/widgets/header_pokemons.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -86,7 +88,9 @@ class SplashScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5.0),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Routes.toScreen(Screens.main, context);
+              },
 
               //**Start Title Button */
 
