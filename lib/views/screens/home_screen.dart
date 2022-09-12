@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                             child: TypeButton(
                               type: types[index],
                               color: colors[index],
-                              fontSize: 14.0, 
+                              fontSize: 14.0,
                               radius: 5.0,
                             ),
                           ),
@@ -141,10 +141,6 @@ class HomeScreen extends StatelessWidget {
                       type: types[index],
                       color: colors[index],
                     );
-                    // CardPokemon(
-                    //   color: colors[index],
-                    //   type: types[index],
-                    // );
                   },
                 ),
 
