@@ -21,6 +21,8 @@ class PokemonAttribute extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
+
+          /**Start name area */
           SizedBox(
             width: 97,
             child: Text(
@@ -34,6 +36,11 @@ class PokemonAttribute extends StatelessWidget {
               ),
             ),
           ),
+
+          //**End name area */
+
+          /**Start indicator area */
+
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(2.0),
@@ -43,6 +50,9 @@ class PokemonAttribute extends StatelessWidget {
                 (97 + 21 + 20),
             height: 7.94,
           ),
+
+         //**End indicator area */
+
         ],
       ),
     );

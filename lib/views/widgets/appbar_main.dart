@@ -7,7 +7,6 @@ class AppBarMain extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 0.0,
       title: Image.asset('assets/images/logo.png'),
       centerTitle: true,
       actions: [

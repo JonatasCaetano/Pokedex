@@ -113,8 +113,8 @@ class PokemonScreen extends StatelessWidget {
                           child: TypeButton(
                             type: 'Fogo',
                             color: const Color(0xfff2802a),
-                            buttonWidth: 50,
-                            buttonHeight: 22,
+                            fontSize: 12.0,
+                            radius: 2.0,
                           ),
                         ),
                         const SizedBox(
@@ -146,7 +146,7 @@ class PokemonScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 18, right: 21),
               child: Text(
-                'Charmeleon destrói seus oponentes sem pena com suas garras afiadas. Torna-se agressivo quando encontra um oponente forte e então a chama na ponta da sua cauda queima intensamente em uma cor azulada.',
+                '"Charmeleon destrói seus oponentes sem pena com suas garras afiadas. Torna-se agressivo quando encontra um oponente forte e então a chama na ponta da sua cauda queima intensamente em uma cor azulada."',
                 style: GoogleFonts.nunito(
                   textStyle: const TextStyle(
                     color: Color(0xff233674),

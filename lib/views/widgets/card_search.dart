@@ -11,8 +11,9 @@ class CardSearch extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         horizontal: 20.0,
       ),
+
+      /**Important color do not remove */
       color: const Color(0xfff8f8f8),
-      //width: 335,
       height: 152,
       child: Container(
         decoration: BoxDecoration(
@@ -30,6 +31,9 @@ class CardSearch extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
+
+                    /**Title */
+
                     Text(
                       'Pokedéx',
                       style: GoogleFonts.nunito(
@@ -40,6 +44,9 @@ class CardSearch extends StatelessWidget {
                         ),
                       ),
                     ),
+
+                    /**Subtitle */
+
                     Padding(
                       padding: const EdgeInsets.only(left: 1.0),
                       child: Text(
@@ -53,6 +60,9 @@ class CardSearch extends StatelessWidget {
                         ),
                       ),
                     ),
+
+                    /**Start of the search area block */
+
                     Container(
                       decoration: const BoxDecoration(
                         boxShadow: [
@@ -102,10 +112,15 @@ class CardSearch extends StatelessWidget {
                         ],
                       ),
                     )
+
+                    /**End of the search area block */
                   ],
                 ),
               ),
             ),
+
+            /**Image Pokemon */
+
             Padding(
               padding: const EdgeInsets.only(right: 27.0),
               child: Image.asset(

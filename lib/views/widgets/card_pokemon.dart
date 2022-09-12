@@ -21,6 +21,8 @@ class CardPokemon extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
+          /**Start Pokemon info block */
+
           SizedBox(
             width: 74,
             child: Padding(
@@ -29,6 +31,8 @@ class CardPokemon extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  /**Name Pokemon */
+
                   Text(
                     'Nome',
                     style: GoogleFonts.nunito(
@@ -42,18 +46,25 @@ class CardPokemon extends StatelessWidget {
                   const SizedBox(
                     height: 3.4,
                   ),
+
+                  /**Type Pokemon */
+
                   SizedBox(
                     height: 22.64,
+                    width: 64.04,
                     child: TypeButton(
                       type: type,
                       color: color.withOpacity(0.5),
-                      buttonHeight: 22.64,
-                      buttonWidth: 64.04,
+                      fontSize: 14.0,
+                      radius: 5.0,
                     ),
                   ),
                   const SizedBox(
                     height: 3.4,
                   ),
+
+                  /**Id Pokemon */
+
                   Text(
                     '#COD',
                     style: GoogleFonts.nunito(
@@ -68,10 +79,14 @@ class CardPokemon extends StatelessWidget {
               ),
             ),
           ),
+
+          /**End Pokemon info block */
+
+          /**Start Pokemon image block */
+
           SizedBox(
             width: 69,
             child: Stack(
-              //alignment: Alignment.center,
               children: [
                 Image.asset(
                   'assets/images/background-pokemons.png',
@@ -84,6 +99,8 @@ class CardPokemon extends StatelessWidget {
               ],
             ),
           )
+
+          /**End Pokemon image block */
         ],
       ),
     );

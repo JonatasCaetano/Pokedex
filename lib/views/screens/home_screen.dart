@@ -31,19 +31,28 @@ class HomeScreen extends StatelessWidget {
     return Stack(
       children: [
         Scaffold(
+          /**AppBar */
           appBar: const AppBarMain(),
+
+          /**Drawer */
           drawer: const Drawer(),
+
+          /**Body */
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                /**Card Top */
                 const Align(
                   alignment: Alignment.topCenter,
                   child: CardSearch(),
                 ),
+
                 const SizedBox(
                   height: 19.0,
                 ),
+
+                /**Start type block */
                 Padding(
                   padding: const EdgeInsets.only(left: 30.0),
                   child: Text(
@@ -61,6 +70,8 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(
                   height: 10.0,
                 ),
+
+                /**Start buttons list */
                 SizedBox(
                   height: 24.0,
                   child: ListView.builder(
@@ -69,19 +80,29 @@ class HomeScreen extends StatelessWidget {
                     itemCount: types.length,
                     itemBuilder: ((context, index) => Padding(
                           padding: const EdgeInsets.only(right: 8.37),
-                          //66.95, 24.0
-                          child: TypeButton(
-                            type: types[index],
-                            color: colors[index],
-                            buttonHeight: 24.0,
-                            buttonWidth: 66.95,
+                          child: SizedBox(
+                            height: 24.0,
+                            width: 66.95,
+                            child: TypeButton(
+                              type: types[index],
+                              color: colors[index],
+                              fontSize: 14.0, 
+                              radius: 5.0,
+                            ),
                           ),
                         )),
                   ),
                 ),
+                //End buttons list
+
+                //End type block
+
                 const SizedBox(
                   height: 32.0,
                 ),
+
+                /**Start most wanted block */
+
                 Padding(
                   padding: const EdgeInsets.only(left: 30.0),
                   child: Text(
@@ -96,9 +117,12 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 const SizedBox(
                   height: 10.0,
                 ),
+
+                /**GridView CardPokemon */
                 GridView.builder(
                   padding: MediaQuery.of(context).size.width >= 375
                       ? const EdgeInsets.only(left: 30.0)
@@ -123,6 +147,9 @@ class HomeScreen extends StatelessWidget {
                     // );
                   },
                 ),
+
+                //End most wanted block
+
                 const SizedBox(
                   height: 19.0,
                 ),
@@ -131,6 +158,8 @@ class HomeScreen extends StatelessWidget {
           ),
           bottomNavigationBar: const BottomNavigationBarMain(),
         ),
+
+        /**Top DotGrid */
         Positioned(
           right: 0.42,
           top: 78.46,
@@ -143,6 +172,8 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
+
+        /**Bottom DotGrid */
         Positioned(
           left: 4.00,
           top: 291.0,

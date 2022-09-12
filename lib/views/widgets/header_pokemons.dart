@@ -9,9 +9,11 @@ class HeaderPokemons extends StatelessWidget {
     return SizedBox(
       width: 350,
       height: 371,
-      //color: Colors.yellow.withOpacity(0.2),
       child: Stack(
         children: [
+
+          /** DO NOT CHANGE THE ORDER OF LIST WIDGETS */
+          
           //Logo
 
           Positioned(
@@ -50,7 +52,7 @@ class HeaderPokemons extends StatelessWidget {
             ),
           ),
 
-          //Pokemon 2
+          /**Start Pokemon 2 */
 
           Positioned(
             right: 11,
@@ -63,7 +65,9 @@ class HeaderPokemons extends StatelessWidget {
             child: Image.asset('assets/images/pokemon-2.png'),
           ),
 
-          //Pokemon 1
+          //**End Pokemon 2 */
+
+          /**Start Pokemon 1 */
 
           Positioned(
             left: 12,
@@ -77,7 +81,9 @@ class HeaderPokemons extends StatelessWidget {
             child: Image.asset('assets/images/pokemon-1.png'),
           ),
 
-          //Pokemon 3
+          //**End Pokemon 1 */
+
+          /**Start Pokemon 3 */
 
           Positioned(
             left: 34,
@@ -89,6 +95,8 @@ class HeaderPokemons extends StatelessWidget {
             top: 189,
             child: Image.asset('assets/images/pokemon-3.png'),
           ),
+
+          //**End Pokemon 3 */
         ],
       ),
     );

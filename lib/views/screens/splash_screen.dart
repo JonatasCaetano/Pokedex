@@ -8,12 +8,12 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF8F8F8),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          //padding: EdgeInsets.zero,
           children: [
+            /**Images Block  */
+
             const Padding(
               padding: EdgeInsets.only(top: 49),
               child: Align(
@@ -21,6 +21,11 @@ class SplashScreen extends StatelessWidget {
                 child: HeaderPokemons(),
               ),
             ),
+
+            //End Images Block
+
+            /**Start title  */
+
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(children: [
@@ -44,9 +49,15 @@ class SplashScreen extends StatelessWidget {
                     )),
               ]),
             ),
+
+            //End title
+
             const SizedBox(
               height: 10.0,
             ),
+
+            /**Start subtitle  */
+
             Text('Descubra todas as espécies de Pokémons',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.nunito(
@@ -56,9 +67,15 @@ class SplashScreen extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                   ),
                 )),
+
+            //End subtitle
+
             const SizedBox(
               height: 19.0,
             ),
+
+            /**Start Button to homeScreen */
+
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 shadowColor: const Color(0xffea686d),
@@ -70,6 +87,9 @@ class SplashScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () {},
+
+              //**Start Title Button */
+
               child: Container(
                 color: Colors.transparent,
                 width: 208,
@@ -98,7 +118,12 @@ class SplashScreen extends StatelessWidget {
                   ],
                 ),
               ),
+
+              //**End Title Button */
             ),
+
+            //End button to homeScreen
+
             const SizedBox(
               height: 67.0,
             ),

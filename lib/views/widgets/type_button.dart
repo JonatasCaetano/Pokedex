@@ -6,14 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 class TypeButton extends StatelessWidget {
   String type;
   Color color;
-  double buttonWidth;
-  double buttonHeight;
+  double fontSize;
+  double radius;
   TypeButton({
     Key? key,
     required this.type,
     required this.color,
-    required this.buttonWidth,
-    required this.buttonHeight,
+    required this.fontSize,
+    required this.radius,
   }) : super(key: key);
 
   @override
@@ -22,21 +22,20 @@ class TypeButton extends StatelessWidget {
       onPressed: () {},
       style: ElevatedButton.styleFrom(
         shadowColor: const Color(0xffea686d),
-        fixedSize: Size(buttonWidth, buttonHeight),
         primary: color,
         elevation: 0.0,
         padding: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5.0),
+          borderRadius: BorderRadius.circular(radius),
         ),
       ),
       child: Text(
         type,
         textAlign: TextAlign.center,
         style: GoogleFonts.nunito(
-          textStyle: const TextStyle(
-            color: Color(0xffffffff),
-            fontSize: 14,
+          textStyle: TextStyle(
+            color: const Color(0xffffffff),
+            fontSize: fontSize,
             fontWeight: FontWeight.w400,
           ),
         ),
