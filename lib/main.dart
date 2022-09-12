@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pokedex/views/screens/account_screen.dart';
+import 'package:pokedex/views/screens/main_app_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: const AccountScreen(),
+      home: const MainAppScreen(),
     );
   }
 }

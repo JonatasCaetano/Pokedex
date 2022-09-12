@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pokedex/views/widgets/appbar_main.dart';
-import 'package:pokedex/views/widgets/bottomnavigationbar_main.dart';
 
 class AccountScreen extends StatelessWidget {
   const AccountScreen({Key? key}) : super(key: key);
@@ -10,7 +8,6 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarMain(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -83,7 +80,6 @@ class AccountScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavigationBarMain(),
     );
   }
 }

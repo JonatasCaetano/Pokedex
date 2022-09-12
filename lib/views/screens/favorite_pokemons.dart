@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/views/widgets/appbar_main.dart';
-import 'package:pokedex/views/widgets/bottomnavigationbar_main.dart';
 import 'package:pokedex/views/widgets/card_pokemon.dart';
 
 // ignore: must_be_immutable
@@ -26,7 +24,6 @@ class FavoritePokemons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarMain(),
       body: GridView.builder(
         padding: const EdgeInsets.all(8.0),
         shrinkWrap: true,
@@ -44,7 +41,6 @@ class FavoritePokemons extends StatelessWidget {
           );
         },
       ),
-      bottomNavigationBar: const BottomNavigationBarMain(),
     );
   }
 }

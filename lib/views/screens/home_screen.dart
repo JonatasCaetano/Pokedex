@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pokedex/views/widgets/appbar_main.dart';
-import 'package:pokedex/views/widgets/bottomnavigationbar_main.dart';
 import 'package:pokedex/views/widgets/card_pokemon.dart';
 import 'package:pokedex/views/widgets/card_search.dart';
-import 'package:pokedex/views/widgets/dot_grid.dart';
 import 'package:pokedex/views/widgets/type_button.dart';
 
 // ignore: must_be_immutable
@@ -31,12 +28,6 @@ class HomeScreen extends StatelessWidget {
     return Stack(
       children: [
         Scaffold(
-          /**AppBar */
-          appBar: const AppBarMain(),
-
-          /**Drawer */
-          drawer: const Drawer(),
-
           /**Body */
           body: SingleChildScrollView(
             child: Column(
@@ -150,35 +141,6 @@ class HomeScreen extends StatelessWidget {
                   height: 19.0,
                 ),
               ],
-            ),
-          ),
-          bottomNavigationBar: const BottomNavigationBarMain(),
-        ),
-
-        /**Top DotGrid */
-        Positioned(
-          right: 0.42,
-          top: 78.46,
-          child: Transform.rotate(
-            angle: 10.0,
-            child: const SizedBox(
-              width: 55.62,
-              height: 51.49,
-              child: DotGrid(),
-            ),
-          ),
-        ),
-
-        /**Bottom DotGrid */
-        Positioned(
-          left: 4.00,
-          top: 291.0,
-          child: Transform.rotate(
-            angle: 10.0,
-            child: const SizedBox(
-              width: 55.62,
-              height: 51.49,
-              child: DotGrid(),
             ),
           ),
         ),
