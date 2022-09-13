@@ -1,8 +1,8 @@
 import '../../models/entities/pokemon.dart';
 
 abstract class PokemonRepository {
-  Pokemon getPokemonByIdOrName({required dynamic search});
-  List<Pokemon> getPokemonsByType({required String type});
-  List<Pokemon> getMostWantedPokemons();
-  List<Pokemon> getPokemonNames();
+  Future<Pokemon> getPokemonByIdOrName({required dynamic search});
+  Future<List<Pokemon>> getPokemonsByType({required String type});
+  Future<List<Pokemon>> getMostWantedPokemons();
+  Future<List<String>> getPokemonNames();
 }
