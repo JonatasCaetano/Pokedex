@@ -199,7 +199,9 @@ class PokemonScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavigationBarMain(),
+      bottomNavigationBar: BottomNavigationBarMain(
+        isPokemonPage: true,
+      ),
     );
   }
 }

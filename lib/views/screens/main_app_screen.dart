@@ -31,7 +31,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
           appBar: AppBarMain(icon: null,),
           drawer: const Drawer(),
           body: screens[index],
-          bottomNavigationBar: const BottomNavigationBarMain(),
+          bottomNavigationBar: BottomNavigationBarMain(isPokemonPage: false,),
         ),
         /**Top DotGrid */
         index == 0
