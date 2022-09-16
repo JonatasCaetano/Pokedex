@@ -24,7 +24,7 @@ class TypeButton extends StatelessWidget {
         shadowColor: const Color(0xffea686d),
         primary: color,
         elevation: 0.0,
-        padding: EdgeInsets.zero,
+        padding: const EdgeInsets.symmetric(horizontal: 1.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius),
         ),

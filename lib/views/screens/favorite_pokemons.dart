@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/models/entities/pokemon.dart';
 import 'package:pokedex/views/widgets/card_pokemon.dart';
 
 // ignore: must_be_immutable
@@ -36,8 +37,16 @@ class FavoritePokemons extends StatelessWidget {
         ),
         itemBuilder: (context, index) {
           return CardPokemon(
-            type: types[index],
-            color: colors[index],
+            pokemon: Pokemon(
+              id: 'id',
+              name: 'name',
+              image: 'image',
+              description: 'description',
+              type: 'type',
+              life: 0,
+              defense: 0,
+              attack: 0,
+            ),
           );
         },
       ),

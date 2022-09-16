@@ -22,6 +22,7 @@ class Pokeapi implements PokemonRepository {
           try {
             Pokemon pokemon = await getPokemonByIdOrName(search: names['name']);
             pokemons.add(pokemon);
+            print("${pokemons.length} : ${pokemon.name}");
             // ignore: empty_catches
           } catch (e) {}
         }
@@ -44,7 +45,7 @@ class Pokeapi implements PokemonRepository {
         Pokemon pokemon = Pokemon(
           id: map['id'].toString(),
           name: map['name'],
-          image: map['sprites']['back_default'],
+          image: map['sprites']['front_default'],
           description: '',
           type: map['types'][0]['type']['name'].toString(),
           life: double.parse(map['stats'][0]['base_stat'].toString()),

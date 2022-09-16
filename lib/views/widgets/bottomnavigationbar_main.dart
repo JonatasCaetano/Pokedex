@@ -14,9 +14,9 @@ class BottomNavigationBarMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mainAppScreenController = Get.put(MainAppScreenController());
+    final mainAppScreenController = Get.find<MainAppScreenController>();
     return BottomNavigationBar(
-        currentIndex: mainAppScreenController.indexPage,
+        currentIndex: mainAppScreenController.indexPage.value,
         onTap: (index) {
           mainAppScreenController.updateIndexPage(index: index);
           if (isPokemonPage) {

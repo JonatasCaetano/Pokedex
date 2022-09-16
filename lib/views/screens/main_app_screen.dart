@@ -17,9 +17,8 @@ class MainAppScreen extends StatefulWidget {
 }
 
 class _MainAppScreenState extends State<MainAppScreen> {
-
   List<Widget> screens = [
-    HomeScreen(),
+    const HomeScreen(),
     FavoritePokemons(),
     const AccountScreen(),
   ];
@@ -29,51 +28,53 @@ class _MainAppScreenState extends State<MainAppScreen> {
     return GetBuilder<MainAppScreenController>(
       global: true,
       init: MainAppScreenController(),
-      builder: (mainAppScreenController) => Stack(
-        children: [
-          Scaffold(
-            appBar: AppBarMain(
-              icon: null,
+      builder: (mainAppScreenController) {
+        return Stack(
+          children: [
+            Scaffold(
+              appBar: AppBarMain(
+                icon: null,
+              ),
+              drawer: const Drawer(),
+              body: screens[mainAppScreenController.indexPage.value],
+              bottomNavigationBar: BottomNavigationBarMain(
+                isPokemonPage: false,
+              ),
             ),
-            drawer: const Drawer(),
-            body: screens[mainAppScreenController.indexPage],
-            bottomNavigationBar: BottomNavigationBarMain(
-              isPokemonPage: false,
-            ),
-          ),
-          /**Top DotGrid */
-          mainAppScreenController.indexPage == 0
-              ? Positioned(
-                  right: 0.42,
-                  top: 78.46,
-                  child: Transform.rotate(
-                    angle: 10.0,
-                    child: const SizedBox(
-                      width: 55.62,
-                      height: 51.49,
-                      child: DotGrid(),
+            /**Top DotGrid */
+            mainAppScreenController.indexPage.value == 0
+                ? Positioned(
+                    right: 0.42,
+                    top: 78.46,
+                    child: Transform.rotate(
+                      angle: 10.0,
+                      child: const SizedBox(
+                        width: 55.62,
+                        height: 51.49,
+                        child: DotGrid(),
+                      ),
                     ),
-                  ),
-                )
-              : Container(),
+                  )
+                : Container(),
 
-          /**Bottom DotGrid */
-          mainAppScreenController.indexPage == 0
-              ? Positioned(
-                  left: 4.00,
-                  top: 291.0,
-                  child: Transform.rotate(
-                    angle: 10.0,
-                    child: const SizedBox(
-                      width: 55.62,
-                      height: 51.49,
-                      child: DotGrid(),
+            /**Bottom DotGrid */
+            mainAppScreenController.indexPage.value == 0
+                ? Positioned(
+                    left: 4.00,
+                    top: 291.0,
+                    child: Transform.rotate(
+                      angle: 10.0,
+                      child: const SizedBox(
+                        width: 55.62,
+                        height: 51.49,
+                        child: DotGrid(),
+                      ),
                     ),
-                  ),
-                )
-              : Container(),
-        ],
-      ),
+                  )
+                : Container(),
+          ],
+        );
+      },
     );
   }
 }
