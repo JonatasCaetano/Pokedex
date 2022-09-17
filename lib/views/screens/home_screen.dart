@@ -124,8 +124,8 @@ class HomeScreen extends StatelessWidget {
                                   : const EdgeInsets.only(left: 25.0),
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
-                              itemCount:
-                                  mainAppScreenController.mostWantedPokemon.length,
+                              itemCount: mainAppScreenController
+                                  .mostWantedPokemon.length,
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount:

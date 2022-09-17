@@ -89,7 +89,7 @@ class SplashScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Routes.toScreen(Screens.main, context);
+                Routes.toScreen(screens: Screens.main, context: context);
               },
 
               //**Start Title Button */

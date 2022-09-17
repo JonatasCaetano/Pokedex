@@ -4,5 +4,6 @@ enum Screens {
   favorite,
   home,
   pokemon,
-  splash;
+  splash,
+  pokemonsType;
 }

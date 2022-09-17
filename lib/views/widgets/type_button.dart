@@ -1,6 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pokedex/enuns/screens.dart';
+import 'package:pokedex/services/converter.dart';
+import 'package:pokedex/services/routes.dart';
 
 // ignore: must_be_immutable
 class TypeButton extends StatelessWidget {
@@ -19,7 +22,13 @@ class TypeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        Routes.toScreen(
+          screens: Screens.pokemonsType,
+          context: context,
+          args: Converter.convertPokemonTypeToEnglish(type: type),
+        );
+      },
       style: ElevatedButton.styleFrom(
         shadowColor: const Color(0xffea686d),
         primary: color,

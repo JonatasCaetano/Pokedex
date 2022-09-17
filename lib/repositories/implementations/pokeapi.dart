@@ -100,11 +100,13 @@ class Pokeapi implements PokemonRepository {
       if (response.statusCode == 200) {
         final map = response.data;
         List<dynamic> list = map['pokemon'];
+        print('quantidade de pokemons recuperados: ${list.length}');
         for (var item in list) {
           try {
             Pokemon pokemon =
                 await getPokemonByIdOrName(search: item['pokemon']['name']);
             pokemons.add(pokemon);
+            print("${pokemons.length} : ${pokemon.name}");
             // ignore: empty_catches
           } catch (e) {}
         }

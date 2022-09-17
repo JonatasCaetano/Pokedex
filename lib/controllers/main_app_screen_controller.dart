@@ -33,4 +33,5 @@ class MainAppScreenController extends GetxController {
     loadMostWanted.value = false;
     update();
   }
+
 }
