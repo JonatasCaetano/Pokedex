@@ -6,6 +6,7 @@ import 'package:pokedex/views/screens/favorite_pokemons.dart';
 import 'package:pokedex/views/screens/home_screen.dart';
 import 'package:pokedex/views/widgets/appbar_main.dart';
 import 'package:pokedex/views/widgets/bottomnavigationbar_main.dart';
+import 'package:pokedex/views/widgets/drawer_widget.dart';
 
 import '../widgets/dot_grid.dart';
 
@@ -35,7 +36,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
               appBar: AppBarMain(
                 icon: null,
               ),
-              drawer: const Drawer(),
+              drawer: const DrawerWidget(),
               body: screens[mainAppScreenController.indexPage.value],
               bottomNavigationBar: BottomNavigationBarMain(
                 isPokemonPage: false,
