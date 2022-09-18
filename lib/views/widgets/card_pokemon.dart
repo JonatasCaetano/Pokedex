@@ -42,6 +42,8 @@ class CardPokemon extends StatelessWidget {
                     /**Name Pokemon */
                     Text(
                       pokemon.name,
+                      overflow: TextOverflow.fade,
+                      maxLines: 1,
                       style: GoogleFonts.nunito(
                         textStyle: const TextStyle(
                           color: Color(0xff233674),
