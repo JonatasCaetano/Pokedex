@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,7 +20,6 @@ class PokemonAttribute extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-
           /**Start name area */
           SizedBox(
             width: 97,
@@ -46,13 +44,18 @@ class PokemonAttribute extends StatelessWidget {
               borderRadius: BorderRadius.circular(2.0),
               color: color,
             ),
-            width: (value / 100) * MediaQuery.of(context).size.width -
-                (97 + 21 + 20),
+            width: value /
+                        (MediaQuery.of(context).size.width - (97 + 21 + 20)) *
+                        MediaQuery.of(context).size.width >
+                    (MediaQuery.of(context).size.width - (97 + 21 + 20))
+                ? (MediaQuery.of(context).size.width - (97 + 21 + 20))
+                : (value /
+                        (MediaQuery.of(context).size.width - (97 + 21 + 20))) *
+                    MediaQuery.of(context).size.width,
             height: 7.94,
           ),
 
-         //**End indicator area */
-
+          //**End indicator area */
         ],
       ),
     );
