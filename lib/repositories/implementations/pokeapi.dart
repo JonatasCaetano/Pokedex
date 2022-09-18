@@ -52,19 +52,29 @@ class Pokeapi implements PokemonRepository {
           defense: double.parse(map['stats'][1]['base_stat'].toString()),
           attack: double.parse(map['stats'][2]['base_stat'].toString()),
         );
-        var response2 = await Dio().get('${url}pokemon-species/$search');
-        if (response2.statusCode == 200) {
-          final map2 = response2.data;
-          List<dynamic> list = map2['flavor_text_entries'];
-
-          pokemon.description = list
-              .firstWhere((element) => element['language']['name'] == 'en')[
-                  'flavor_text']
-              .toString()
-              .replaceAll('\\', ' ')
-              .replaceAll('\n', ' ');
-        }
         return pokemon;
+      } else {
+        throw Exception();
+      }
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<String> getDescriptionPokemon({required var id}) async {
+    try {
+      var response = await Dio().get('${url}pokemon-species/$id');
+      if (response.statusCode == 200) {
+        final map = response.data;
+        List<dynamic> list = map['flavor_text_entries'];
+
+        return list
+            .firstWhere(
+                (element) => element['language']['name'] == 'en')['flavor_text']
+            .toString()
+            .replaceAll('\\', ' ')
+            .replaceAll('\n', ' ');
       } else {
         throw Exception();
       }
