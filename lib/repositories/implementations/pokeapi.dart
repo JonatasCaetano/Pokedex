@@ -61,7 +61,8 @@ class Pokeapi implements PokemonRepository {
               .firstWhere((element) => element['language']['name'] == 'en')[
                   'flavor_text']
               .toString()
-              .replaceAll('\\', ' ');
+              .replaceAll('\\', ' ')
+              .replaceAll('\n', ' ');
         }
         return pokemon;
       } else {
