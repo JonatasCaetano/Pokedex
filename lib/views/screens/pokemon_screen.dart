@@ -1,14 +1,24 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pokedex/services/converter.dart';
+
 import 'package:pokedex/views/widgets/appbar_main.dart';
 import 'package:pokedex/views/widgets/bottomnavigationbar_main.dart';
 import 'package:pokedex/views/widgets/pokemon_attribute.dart';
 import 'package:pokedex/views/widgets/pokemon_container.dart';
 import 'package:pokedex/views/widgets/type_button.dart';
 
+import '../../models/entities/pokemon.dart';
+
+// ignore: must_be_immutable
 class PokemonScreen extends StatelessWidget {
-  const PokemonScreen({Key? key}) : super(key: key);
+  Pokemon pokemon;
+  PokemonScreen({
+    Key? key,
+    required this.pokemon,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +37,9 @@ class PokemonScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             /**Pokemon container */
-            const PokemonContainer(),
+            PokemonContainer(
+              pokemon: pokemon,
+            ),
 
             /**Start of name block and buttons */
             Padding(
@@ -44,7 +56,7 @@ class PokemonScreen extends StatelessWidget {
                       children: [
                         /**Name Pokemon */
                         Text(
-                          'Nome',
+                          pokemon.name,
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
                               color: Color(0xff233674),
@@ -55,7 +67,7 @@ class PokemonScreen extends StatelessWidget {
                         ),
                         /**Cod Pokemon */
                         Text(
-                          'Cod: #0034',
+                          'Cod: #00${pokemon.id}',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
                               color: Color(0xff233674),
@@ -118,7 +130,8 @@ class PokemonScreen extends StatelessWidget {
                           width: 50,
                           height: 22,
                           child: TypeButton(
-                            type: 'Fogo',
+                            type: Converter.convertPokemonTypeToPortugues(
+                                type: pokemon.type),
                             color: const Color(0xfff2802a),
                             fontSize: 12.0,
                             radius: 2.0,
@@ -153,7 +166,7 @@ class PokemonScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 18, right: 21),
               child: Text(
-                '"Charmeleon destrói seus oponentes sem pena com suas garras afiadas. Torna-se agressivo quando encontra um oponente forte e então a chama na ponta da sua cauda queima intensamente em uma cor azulada."',
+                '"${pokemon.description}"',
                 style: GoogleFonts.nunito(
                   textStyle: const TextStyle(
                     color: Color(0xff233674),
@@ -175,17 +188,17 @@ class PokemonScreen extends StatelessWidget {
                   PokemonAttribute(
                     name: 'Vida',
                     color: const Color(0xfff7802a),
-                    value: 90,
+                    value: pokemon.life,
                   ),
                   PokemonAttribute(
                     name: 'Defesa',
                     color: const Color(0xffc4f789),
-                    value: 70,
+                    value: pokemon.defense,
                   ),
                   PokemonAttribute(
                     name: 'Ataque',
                     color: const Color(0xffea686d),
-                    value: 80,
+                    value: pokemon.attack,
                   ),
                 ],
               ),
