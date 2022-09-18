@@ -45,7 +45,7 @@ class Pokeapi implements PokemonRepository {
         Pokemon pokemon = Pokemon(
           id: map['id'].toString(),
           name: map['name'],
-          image: map['sprites']['front_default'],
+          image: map['sprites']['other']['official-artwork']['front_default'],
           description: '',
           type: map['types'][0]['type']['name'].toString(),
           life: double.parse(map['stats'][0]['base_stat'].toString()),
