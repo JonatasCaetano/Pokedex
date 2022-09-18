@@ -5,4 +5,5 @@ abstract class PokemonRepository {
   Future<List<Pokemon>> getPokemonsByType({required String type});
   Future<List<Pokemon>> getMostWantedPokemons();
   Future<List<String>> getPokemonNames();
+  Future<String> getDescriptionPokemon({required var id});
 }
