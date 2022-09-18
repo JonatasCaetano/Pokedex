@@ -11,10 +11,10 @@ class Pokeapi implements PokemonRepository {
 
   @override
   Future<List<Pokemon>> getMostWantedPokemons() async {
-    int number = Random().nextInt(1133);
+    int number = Random().nextInt(1143);
     List<Pokemon> pokemons = [];
     try {
-      var response = await Dio().get('${url}pokemon/?offset=$number&limit=20');
+      var response = await Dio().get('${url}pokemon/?offset=$number&limit=10');
       if (response.statusCode == 200) {
         final map = response.data;
         List<dynamic> list = map['results'];
