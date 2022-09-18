@@ -22,7 +22,8 @@ class CardPokemon extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Routes.toScreen(screens: Screens.pokemon, context: context);
+        Routes.toScreen(
+            screens: Screens.pokemon, context: context, args: pokemon);
       },
       child: Card(
         margin: EdgeInsets.zero,
