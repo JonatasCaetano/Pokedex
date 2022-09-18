@@ -14,7 +14,7 @@ class Routes {
         break;
       case Screens.pokemon:
         Navigator.push(context,
-            MaterialPageRoute(builder: ((context) => const PokemonScreen())));
+            MaterialPageRoute(builder: ((context) => PokemonScreen(pokemon: args,))));
         break;
       case Screens.pokemonsType:
         Navigator.push(
