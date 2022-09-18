@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:pokedex/models/entities/pokemon.dart';
 
+// ignore: must_be_immutable
 class PokemonContainer extends StatelessWidget {
-  const PokemonContainer({Key? key}) : super(key: key);
+  Pokemon pokemon;
+  PokemonContainer({
+    Key? key,
+    required this.pokemon,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,10 +19,10 @@ class PokemonContainer extends StatelessWidget {
           decoration: BoxDecoration(
             color: const Color(0xfff7f1f1),
             borderRadius: BorderRadius.circular(20.0),
-            image: const DecorationImage(
-              fit: BoxFit.scaleDown,
-              image: AssetImage(
-                'assets/images/pokemon-1.png',
+            image: DecorationImage(
+              fit: BoxFit.fitHeight,
+              image: NetworkImage(
+                pokemon.image,
               ),
               alignment: Alignment.center,
             ),
