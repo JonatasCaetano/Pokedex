@@ -3,14 +3,34 @@ import 'package:pokedex/enuns/screens.dart';
 import 'package:pokedex/repositories/dao_factory.dart';
 import 'package:pokedex/services/routes.dart';
 
-import '../../models/entities/pokemon.dart';
-
 class SearchScreen extends SearchDelegate<String> {
   final pokemonRepository = DaoFactory.getPokemonRepository();
   List<String> suggestions = [];
-  late String text;
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    return theme.copyWith(
+      inputDecorationTheme: const InputDecorationTheme(
+        border: InputBorder.none,
+      ),
+      textTheme: const TextTheme(
+        headline6: TextStyle(
+          color: Colors.black,
+          fontSize: 18,
+          decorationThickness: 0.0,
+        ),
+      ),
+    );
+  }
+
+  @override
+  String get searchFieldLabel => 'Buscar';
+
+  final String text;
 
   SearchScreen({required this.text}) {
+    query = text;
     getSuggestions();
   }
 
