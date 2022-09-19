@@ -90,7 +90,7 @@ class CardSearch extends StatelessWidget {
                                   bottomLeft: Radius.circular(5.0),
                                 ),
                               ),
-                              child: g(
+                              child: TextField(
                                 keyboardType: TextInputType.text,
                                 controller: textEditingController,
                                 cursorColor: const Color(0xffea686d),
