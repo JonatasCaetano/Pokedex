@@ -90,18 +90,23 @@ class CardSearch extends StatelessWidget {
                                   bottomLeft: Radius.circular(5.0),
                                 ),
                               ),
-                              child: TextField(
+                              child: g(
                                 keyboardType: TextInputType.text,
                                 controller: textEditingController,
+                                cursorColor: const Color(0xffea686d),
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                ),
                               ),
                             ),
                           ),
                           ElevatedButton(
                             onPressed: () {
                               showSearch(
-                                  context: context,
-                                  delegate: SearchScreen(
-                                      text: textEditingController.text));
+                                context: context,
+                                delegate: SearchScreen(
+                                    text: textEditingController.text),
+                              );
                             },
                             style: ElevatedButton.styleFrom(
                               shadowColor: const Color(0xffea686d),
