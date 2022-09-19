@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pokedex/views/screens/search_screen.dart';
 
 class CardSearch extends StatelessWidget {
   const CardSearch({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final textEditingController = TextEditingController();
+
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: 20.0,
@@ -31,7 +34,6 @@ class CardSearch extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-
                     /**Title */
 
                     Text(
@@ -88,14 +90,23 @@ class CardSearch extends StatelessWidget {
                                   bottomLeft: Radius.circular(5.0),
                                 ),
                               ),
+                              child: TextField(
+                                keyboardType: TextInputType.text,
+                                controller: textEditingController,
+                              ),
                             ),
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              showSearch(
+                                  context: context,
+                                  delegate: SearchScreen(
+                                      text: textEditingController.text));
+                            },
                             style: ElevatedButton.styleFrom(
                               shadowColor: const Color(0xffea686d),
                               fixedSize: const Size.fromWidth(40.4),
-                              primary: const Color(0xffEa686D),
+                              backgroundColor: const Color(0xffEa686D),
                               elevation: 5.0,
                               shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
