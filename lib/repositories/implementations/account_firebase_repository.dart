@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pokedex/models/entities/user_entity.dart';
 import 'package:pokedex/models/entities/pokemon.dart';
@@ -34,7 +35,7 @@ class AccountFirebaseRepository extends AccountRepository {
 
   @override
   Future<UserEntity> userIsLoggedIn() async {
-    User? user = FirebaseAuth.instance.currentUser;
+    User? user = firebaseAuth.currentUser;
     if (user != null) {
       DocumentSnapshot documentSnapshot =
           await firebaseFirestore.collection('users').doc(user.uid).get();
@@ -81,8 +82,26 @@ class AccountFirebaseRepository extends AccountRepository {
   }
 
   @override
-  Future<void> checkIfPokemonIsFavorite({required Pokemon pokemon}) {
-    throw UnimplementedError();
+  Future<bool> checkIfPokemonIsFavorite({required Pokemon pokemon}) async {
+    try {
+      User? user = firebaseAuth.currentUser;
+      if (user == null) {
+        return false;
+      }
+      DocumentSnapshot documentSnapshot = await firebaseFirestore
+          .collection('users')
+          .doc(user.uid)
+          .collection('favorites')
+          .doc(pokemon.id)
+          .get();
+      if (documentSnapshot.exists) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      throw Exception();
+    }
   }
 
   @override

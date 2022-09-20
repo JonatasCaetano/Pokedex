@@ -104,11 +104,18 @@ class PokemonScreen extends StatelessWidget {
                                   child: IconButton(
                                     onPressed: () {},
                                     padding: EdgeInsets.zero,
-                                    icon: SvgPicture.asset(
-                                      'assets/icons/favorite.svg',
-                                      width: 13,
-                                      color: const Color(0xffc4c4c4),
-                                    ),
+                                    icon: pokemonScreenController
+                                            .isFavorite.isTrue
+                                        ? SvgPicture.asset(
+                                            'assets/icons/favorite-solid.svg',
+                                            width: 13,
+                                            color: const Color(0xffEa686D),
+                                          )
+                                        : SvgPicture.asset(
+                                            'assets/icons/favorite.svg',
+                                            width: 13,
+                                            color: const Color(0xffc4c4c4),
+                                          ),
                                   ),
                                 ),
                                 SizedBox(

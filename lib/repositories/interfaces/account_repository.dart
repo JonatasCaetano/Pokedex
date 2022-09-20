@@ -10,7 +10,7 @@ abstract class AccountRepository {
   Future<void> savePokemonFavorite({required Pokemon pokemon});
   Future<void> removePokemonFavorite({required Pokemon pokemon});
   Future<List<Pokemon>> getPokemonsFavorite();
-  Future<void> checkIfPokemonIsFavorite({required Pokemon pokemon});
+  Future<bool> checkIfPokemonIsFavorite({required Pokemon pokemon});
   Future<void> savePokemonRecentlySeen({required Pokemon pokemon});
   Future<List<Pokemon>> getPokemonsRecentlySeen();
 }

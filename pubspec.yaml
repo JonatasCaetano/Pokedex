@@ -83,6 +83,7 @@ flutter:
     - assets/icons/home.svg
     - assets/icons/favorite.svg
     - assets/icons/account.svg
+    - assets/icons/favorite-solid.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
