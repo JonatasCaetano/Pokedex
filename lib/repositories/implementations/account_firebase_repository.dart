@@ -1,22 +1,78 @@
-import 'package:pokedex/models/entities/user.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:pokedex/models/entities/user_entity.dart';
 import 'package:pokedex/models/entities/pokemon.dart';
 import 'package:pokedex/repositories/interfaces/account_repository.dart';
 
 class AccountFirebaseRepository extends AccountRepository {
+  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+
   @override
-  Future<User> createAccount(
-      {required String email, required String password}) {
-    throw UnimplementedError();
+  Future<UserEntity> createAccount(
+      {required String name,
+      required String email,
+      required String password}) async {
+    try {
+      UserCredential userCredential = await firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password);
+      UserEntity user = UserEntity(
+        id: userCredential.user!.uid,
+        name: name,
+        email: userCredential.user!.email!,
+      );
+      await firebaseFirestore
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .set(user.toMap());
+      print(user);
+      return user;
+    } catch (e) {
+      throw Exception();
+    }
   }
 
   @override
-  Future<User> logIn({required String email, required String password}) {
-    throw UnimplementedError();
+  Future<UserEntity> userIsLoggedIn() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      DocumentSnapshot documentSnapshot =
+          await firebaseFirestore.collection('users').doc(user.uid).get();
+
+      Map<String, dynamic> map =
+          documentSnapshot.data() as Map<String, dynamic>;
+
+      UserEntity userEntity = UserEntity.fromMap(map);
+      print(userEntity);
+      return userEntity;
+    } else {
+      throw Exception();
+    }
   }
 
   @override
-  Future<void> logOut() {
-    throw UnimplementedError();
+  Future<UserEntity> logIn(
+      {required String email, required String password}) async {
+    try {
+      UserCredential userCredential = await firebaseAuth
+          .signInWithEmailAndPassword(email: email, password: password);
+      DocumentSnapshot documentSnapshot = await firebaseFirestore
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .get();
+      Map<String, dynamic> map =
+          documentSnapshot.data() as Map<String, dynamic>;
+      UserEntity userEntity = UserEntity.fromMap(map);
+      print(userEntity);
+      return userEntity;
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<void> logOut() async {
+    firebaseAuth.signOut();
   }
 
   @override
