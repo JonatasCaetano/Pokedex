@@ -77,8 +77,27 @@ class AccountFirebaseRepository extends AccountRepository {
   }
 
   @override
-  Future<List<Pokemon>> getPokemonsFavorite() {
-    throw UnimplementedError();
+  Future<List<Pokemon>> getPokemonsFavorite() async {
+    List<Pokemon> pokemons = [];
+    try {
+      User? user = firebaseAuth.currentUser;
+      if (user == null) {
+        throw Exception();
+      }
+      final queryDocumentSnapshot = await firebaseFirestore
+          .collection('users')
+          .doc(user.uid)
+          .collection('favorites')
+          .get();
+      for (DocumentSnapshot documentSnapshot in queryDocumentSnapshot.docs) {
+        Pokemon pokemon =
+            Pokemon.fromMap(documentSnapshot.data() as Map<String, dynamic>);
+        pokemons.add(pokemon);
+      }
+      return pokemons;
+    } catch (e) {
+      throw Exception();
+    }
   }
 
   @override

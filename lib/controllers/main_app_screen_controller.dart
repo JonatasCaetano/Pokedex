@@ -16,13 +16,16 @@ class MainAppScreenController extends GetxController {
       DaoFactory.getAccountRepository();
 
   RxList<Pokemon> mostWantedPokemon = <Pokemon>[].obs;
+  RxList<Pokemon> favoritesPokemon = <Pokemon>[].obs;
   var indexPage = 0.obs;
   var loadMostWanted = false.obs;
+  var loadFavorites = false.obs;
   UserEntity? userEntity;
 
   MainAppScreenController() {
     userIsLoggedIn();
     getMostWantedPokemons();
+    getPokemonsFavorite();
   }
 
   void updateIndexPage({required index}) {
@@ -66,6 +69,18 @@ class MainAppScreenController extends GetxController {
   Future<void> logOut() async {
     _accountRepository.logOut();
     userEntity = null;
+    update();
+  }
+
+  Future<void> getPokemonsFavorite() async {
+    print('getPokemonsFavorite');
+    loadFavorites.value = true;
+    update();
+    favoritesPokemon.clear();
+    _accountRepository.getPokemonsFavorite().then((value) {
+      favoritesPokemon.value = value.obs;
+    });
+    loadFavorites.value = false;
     update();
   }
 }

@@ -30,34 +30,26 @@ class FavoritePokemons extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<MainAppScreenController>(
       builder: (mainAppScreenController) {
-       return mainAppScreenController.userEntity == null ? LoginScreen() :
-        Scaffold(
-            body: GridView.builder(
-              padding: const EdgeInsets.all(8.0),
-              shrinkWrap: true,
-              itemCount: 5,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: MediaQuery.of(context).size.width ~/ 200,
-                childAspectRatio: 159.53 / 110.94,
-                crossAxisSpacing: 7,
-                mainAxisSpacing: 11,
-              ),
-              itemBuilder: (context, index) {
-                return CardPokemon(
-                  pokemon: Pokemon(
-                    id: 'id',
-                    name: 'name',
-                    image: 'image',
-                    description: 'description',
-                    type: 'type',
-                    life: 0,
-                    defense: 0,
-                    attack: 0,
+        return mainAppScreenController.userEntity == null
+            ? LoginScreen()
+            : Scaffold(
+                body: GridView.builder(
+                  padding: const EdgeInsets.all(8.0),
+                  shrinkWrap: true,
+                  itemCount: mainAppScreenController.favoritesPokemon.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: MediaQuery.of(context).size.width ~/ 200,
+                    childAspectRatio: 159.53 / 110.94,
+                    crossAxisSpacing: 7,
+                    mainAxisSpacing: 11,
                   ),
-                );
-              },
-            ),
-          );
+                  itemBuilder: (context, index) {
+                    return CardPokemon(
+                      pokemon: mainAppScreenController.favoritesPokemon[index],
+                    );
+                  },
+                ),
+              );
       },
     );
   }

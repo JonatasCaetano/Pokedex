@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
 
 import '../models/entities/pokemon.dart';
-import '../models/entities/user_entity.dart';
 import '../repositories/dao_factory.dart';
+import 'main_app_screen_controller.dart';
 
 class PokemonScreenController extends GetxController {
   static PokemonScreenController get to => Get.find<PokemonScreenController>();
+  final mainAppScreenController = Get.find<MainAppScreenController>();
   final _pokemonRepository = DaoFactory.getPokemonRepository();
   final _accountRepository = DaoFactory.getAccountRepository();
   late Pokemon pokemon;
@@ -41,6 +42,7 @@ class PokemonScreenController extends GetxController {
         isFavorite.value = true;
         update();
       });
+      mainAppScreenController.getPokemonsFavorite();
     } catch (e) {
       print(e);
     }
@@ -54,6 +56,7 @@ class PokemonScreenController extends GetxController {
         isFavorite.value = false;
         update();
       });
+      mainAppScreenController.getPokemonsFavorite();
     } catch (e) {
       print(e);
     }
