@@ -27,9 +27,35 @@ class PokemonScreenController extends GetxController {
   }
 
   Future<void> checkIfPokemonIsFavorite() async {
-   isFavorite.value = await _accountRepository.checkIfPokemonIsFavorite(
-           pokemon: pokemon);
-      update();
-      print('isFavorite: $isFavorite');
+    isFavorite.value =
+        await _accountRepository.checkIfPokemonIsFavorite(pokemon: pokemon);
+    update();
+    print('isFavorite: $isFavorite');
+  }
+
+  Future<void> savePokemonFavorite() async {
+    try {
+      await _accountRepository
+          .savePokemonFavorite(pokemon: pokemon)
+          .then((value) {
+        isFavorite.value = true;
+        update();
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> removePokemonFavorite() async {
+    try {
+      await _accountRepository
+          .removePokemonFavorite(pokemon: pokemon)
+          .then((value) {
+        isFavorite.value = false;
+        update();
+      });
+    } catch (e) {
+      print(e);
+    }
   }
 }

@@ -102,7 +102,18 @@ class PokemonScreen extends StatelessWidget {
                                 SizedBox(
                                   width: 25,
                                   child: IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      if (pokemonScreenController
+                                          .isFavorite.isTrue) {
+                                        pokemonScreenController
+                                            .removePokemonFavorite(
+                                                );
+                                      } else {
+                                        pokemonScreenController
+                                            .savePokemonFavorite(
+                                                );
+                                      }
+                                    },
                                     padding: EdgeInsets.zero,
                                     icon: pokemonScreenController
                                             .isFavorite.isTrue

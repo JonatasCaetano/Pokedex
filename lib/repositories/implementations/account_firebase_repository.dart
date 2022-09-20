@@ -105,13 +105,47 @@ class AccountFirebaseRepository extends AccountRepository {
   }
 
   @override
-  Future<void> savePokemonFavorite({required Pokemon pokemon}) {
-    throw UnimplementedError();
+  Future<void> savePokemonFavorite({required Pokemon pokemon}) async {
+    try {
+      User? user = firebaseAuth.currentUser;
+      if (user == null) {
+        throw Exception();
+      }
+      await firebaseFirestore
+          .collection('users')
+          .doc(user.uid)
+          .collection('favorites')
+          .doc(pokemon.id)
+          .set(pokemon.toMap());
+    } catch (e) {
+      throw Exception();
+    }
   }
 
   @override
-  Future<void> removePokemonFavorite({required Pokemon pokemon}) {
-    throw UnimplementedError();
+  Future<void> removePokemonFavorite({required Pokemon pokemon}) async {
+    try {
+      User? user = firebaseAuth.currentUser;
+      if (user == null) {
+        throw Exception();
+      }
+      DocumentSnapshot documentSnapshot = await firebaseFirestore
+          .collection('users')
+          .doc(user.uid)
+          .collection('favorites')
+          .doc(pokemon.id)
+          .get();
+      if (documentSnapshot.exists) {
+        firebaseFirestore
+            .collection('users')
+            .doc(user.uid)
+            .collection('favorites')
+            .doc(pokemon.id)
+            .delete();
+      }
+    } catch (e) {
+      throw Exception();
+    }
   }
 
   @override
