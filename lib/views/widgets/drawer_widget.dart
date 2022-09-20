@@ -89,6 +89,19 @@ class DrawerWidget extends StatelessWidget {
               ),
               title: const Text("Minha conta"),
             ),
+          ),
+          GestureDetector(
+            onTap: () {
+              mainAppScreenController.logOut();
+              Navigator.pop(context);
+            },
+            child: const ListTile(
+              leading: Icon(
+                Icons.logout,
+                color: Color(0xffa2a9b0),
+              ),
+              title: Text("Sair"),
+            ),
           )
         ],
       ),
