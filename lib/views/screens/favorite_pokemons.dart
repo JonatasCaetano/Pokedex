@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pokedex/models/entities/pokemon.dart';
+import 'package:pokedex/views/screens/login_screen.dart';
 import 'package:pokedex/views/widgets/card_pokemon.dart';
+
+import '../../controllers/main_app_screen_controller.dart';
 
 // ignore: must_be_immutable
 class FavoritePokemons extends StatelessWidget {
@@ -24,32 +28,37 @@ class FavoritePokemons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GridView.builder(
-        padding: const EdgeInsets.all(8.0),
-        shrinkWrap: true,
-        itemCount: 5,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: MediaQuery.of(context).size.width ~/ 200,
-          childAspectRatio: 159.53 / 110.94,
-          crossAxisSpacing: 7,
-          mainAxisSpacing: 11,
-        ),
-        itemBuilder: (context, index) {
-          return CardPokemon(
-            pokemon: Pokemon(
-              id: 'id',
-              name: 'name',
-              image: 'image',
-              description: 'description',
-              type: 'type',
-              life: 0,
-              defense: 0,
-              attack: 0,
+    return GetBuilder<MainAppScreenController>(
+      builder: (mainAppScreenController) {
+       return mainAppScreenController.userEntity == null ? LoginScreen() :
+        Scaffold(
+            body: GridView.builder(
+              padding: const EdgeInsets.all(8.0),
+              shrinkWrap: true,
+              itemCount: 5,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: MediaQuery.of(context).size.width ~/ 200,
+                childAspectRatio: 159.53 / 110.94,
+                crossAxisSpacing: 7,
+                mainAxisSpacing: 11,
+              ),
+              itemBuilder: (context, index) {
+                return CardPokemon(
+                  pokemon: Pokemon(
+                    id: 'id',
+                    name: 'name',
+                    image: 'image',
+                    description: 'description',
+                    type: 'type',
+                    life: 0,
+                    defense: 0,
+                    attack: 0,
+                  ),
+                );
+              },
             ),
           );
-        },
-      ),
+      },
     );
   }
 }
