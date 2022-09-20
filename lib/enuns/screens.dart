@@ -5,5 +5,7 @@ enum Screens {
   home,
   pokemon,
   splash,
-  pokemonsType;
+  pokemonsType,
+  createAccount,
+  login;
 }
