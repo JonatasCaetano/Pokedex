@@ -19,13 +19,25 @@ class DrawerWidget extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
-                  child: CircleAvatar(
-                    radius: 60.0,
-                    backgroundColor: const Color(0xffffffff),
-                    child: SvgPicture.asset(
-                      'assets/icons/account.svg',
-                      width: 120,
+                GetBuilder<MainAppScreenController>(
+                  builder: (mainAppScreenController) => Center(
+                    child: CircleAvatar(
+                      radius: 60.0,
+                      backgroundColor: const Color(0xffffffff),
+                      child: mainAppScreenController.userEntity == null
+                          ? SvgPicture.asset(
+                              'assets/icons/account.svg',
+                              width: 120,
+                            )
+                          : mainAppScreenController.userEntity!.image == null
+                              ? SvgPicture.asset(
+                                  'assets/icons/account.svg',
+                                  width: 120,
+                                )
+                              : Image.network(
+                                  mainAppScreenController.userEntity!.image!,
+                                  width: 120,
+                                ),
                     ),
                   ),
                 ),
@@ -34,14 +46,18 @@ class DrawerWidget extends StatelessWidget {
                 ),
 
                 //**Name */
-                Text(
-                  'Nome do usuario',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.nunito(
-                    textStyle: const TextStyle(
-                      color: Color(0xff2F3E77),
-                      fontSize: 25,
-                      fontWeight: FontWeight.w700,
+                GetBuilder<MainAppScreenController>(
+                  builder: (mainAppScreenController) => Text(
+                    mainAppScreenController.userEntity == null
+                        ? 'Nome do usuario'
+                        : mainAppScreenController.userEntity!.name,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.nunito(
+                      textStyle: const TextStyle(
+                        color: Color(0xff2F3E77),
+                        fontSize: 25,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
                 ),

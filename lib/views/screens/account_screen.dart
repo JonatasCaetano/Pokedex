@@ -19,9 +19,9 @@ class AccountScreen extends StatelessWidget {
           : Scaffold(
               body: SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //**Start Image profile */
-
                     Align(
                       alignment: Alignment.topCenter,
                       child: Container(
@@ -35,10 +35,14 @@ class AccountScreen extends StatelessWidget {
                           child: CircleAvatar(
                             radius: 60.0,
                             backgroundColor: const Color(0xffffffff),
-                            child: SvgPicture.asset(
-                              'assets/icons/account.svg',
-                              width: 120,
-                            ),
+                            child: mainAppScreenController.userEntity!.image ==
+                                    null
+                                ? SvgPicture.asset(
+                                    'assets/icons/account.svg',
+                                    width: 120,
+                                  )
+                                : Image.network(
+                                    mainAppScreenController.userEntity!.image!),
                           ),
                         ),
                       ),
@@ -51,40 +55,37 @@ class AccountScreen extends StatelessWidget {
                     ),
 
                     //**Name */
-                    Text(
-                      'Nome do usuario',
-                      style: GoogleFonts.nunito(
-                        textStyle: const TextStyle(
-                          color: Color(0xff2F3E77),
-                          fontSize: 25,
-                          fontWeight: FontWeight.w700,
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        mainAppScreenController.userEntity!.name,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.nunito(
+                          textStyle: const TextStyle(
+                            color: Color(0xff2F3E77),
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                     ),
+                    const SizedBox(
+                      height: 16.0,
+                    ),
 
                     //**Favorites quantity */
-                    RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(children: [
-                        TextSpan(
-                            text: 'Favoritos: ',
-                            style: GoogleFonts.nunito(
-                              textStyle: const TextStyle(
-                                color: Color(0xff2F3E77),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            )),
-                        TextSpan(
-                            text: '18',
-                            style: GoogleFonts.nunito(
-                              textStyle: const TextStyle(
-                                color: Color(0xffea686d),
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            )),
-                      ]),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        'Recentes ',
+                        style: GoogleFonts.nunito(
+                          textStyle: const TextStyle(
+                            color: Color(0xff2F3E77),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
                     ),
                     const SizedBox(
                       height: 16.0,
