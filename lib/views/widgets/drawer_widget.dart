@@ -48,7 +48,7 @@ class DrawerWidget extends StatelessWidget {
                 GetBuilder<MainAppScreenController>(
                   builder: (mainAppScreenController) => Text(
                     mainAppScreenController.userEntity == null
-                        ? 'Nome do usuario'
+                        ? 'Usuário'
                         : mainAppScreenController.userEntity!.name,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.nunito(
@@ -105,6 +105,8 @@ class DrawerWidget extends StatelessWidget {
               title: const Text("Minha conta"),
             ),
           ),
+           mainAppScreenController.userEntity ==
+                                  null ? Container() :
           GestureDetector(
             onTap: () {
               mainAppScreenController.logOut();
