@@ -34,7 +34,7 @@ class CardPokemon extends StatelessWidget {
             SizedBox(
               width: 74,
               child: Padding(
-                padding: const EdgeInsets.only(left: 4.0),
+                padding: const EdgeInsets.only(left: 8.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,7 +42,7 @@ class CardPokemon extends StatelessWidget {
                     /**Name Pokemon */
                     Text(
                       pokemon.name,
-                      overflow: TextOverflow.fade,
+                      overflow: TextOverflow.visible,
                       maxLines: 1,
                       style: GoogleFonts.nunito(
                         textStyle: const TextStyle(
@@ -91,17 +91,22 @@ class CardPokemon extends StatelessWidget {
 
             /**Start Pokemon image block */
 
-            SizedBox(
-              width: 69,
-              child: Stack(
-                children: [
-                  Image.asset(
-                    'assets/images/background-pokemons.png',
-                  ),
-                  Image.network(
-                    pokemon.image,
-                  ),
-                ],
+            Expanded(
+              child: SizedBox(
+                //width: 69,
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      'assets/images/background-pokemons.png',
+                      width: MediaQuery.of(context).size.width,
+                      alignment: Alignment.center,
+                    ),
+                    Image.network(
+                      pokemon.image,
+                      alignment: Alignment.center,
+                    ),
+                  ],
+                ),
               ),
             )
 
