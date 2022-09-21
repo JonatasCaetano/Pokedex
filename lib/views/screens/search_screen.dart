@@ -27,15 +27,17 @@ class SearchScreen extends SearchDelegate<String> {
   @override
   String get searchFieldLabel => 'Buscar';
 
-  final String text;
-
-  SearchScreen({required this.text}) {
-    query = text;
-    getSuggestions();
+  SearchScreen({required String text}) {
+    getSuggestions(text: text);
   }
 
-  getSuggestions() async {
+  getSuggestions({required String text}) async {
+    Future.delayed(
+      const Duration(milliseconds: 1),
+      () => query = text,
+    );
     suggestions = await pokemonRepository.getPokemonNames();
+    query = text;
   }
 
   @override
@@ -93,7 +95,7 @@ class SearchScreen extends SearchDelegate<String> {
           .where((element) =>
               element.toLowerCase().startsWith(query.toLowerCase()))
           .toList();
-      // ignore: avoid_print
+      print('suggestions: $suggestions');
       print('names: $names');
       return ListView.builder(
         itemCount: names.length,
@@ -103,7 +105,6 @@ class SearchScreen extends SearchDelegate<String> {
               await pokemonRepository
                   .getPokemonByIdOrName(search: names[index])
                   .then((pokemon) {
-                Navigator.pop(context);
                 Routes.toScreen(
                   screens: Screens.pokemon,
                   context: context,
