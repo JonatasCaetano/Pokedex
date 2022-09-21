@@ -32,6 +32,7 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 controller: email,
+                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   label: Text('Email'),
                 ),
@@ -48,6 +49,7 @@ class LoginScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 controller: password,
+                keyboardType: TextInputType.visiblePassword,
                 decoration: const InputDecoration(
                   label: Text('Senha'),
                 ),

@@ -19,10 +19,14 @@ class CreateAccountScreen extends StatelessWidget {
         key: keyTextFormField,
         child: ListView(
           children: [
+            const SizedBox(
+              height: 16.0,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 controller: name,
+                keyboardType: TextInputType.text,
                 decoration: const InputDecoration(
                   label: Text('Nome'),
                 ),
@@ -39,6 +43,7 @@ class CreateAccountScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 controller: email,
+                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   label: Text('Email'),
                 ),
@@ -55,6 +60,7 @@ class CreateAccountScreen extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
                 controller: password,
+                keyboardType: TextInputType.visiblePassword,
                 decoration: const InputDecoration(
                   label: Text('Senha'),
                 ),
