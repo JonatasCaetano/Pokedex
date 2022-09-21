@@ -106,12 +106,10 @@ class PokemonScreen extends StatelessWidget {
                                       if (pokemonScreenController
                                           .isFavorite.isTrue) {
                                         pokemonScreenController
-                                            .removePokemonFavorite(
-                                                );
+                                            .removePokemonFavorite();
                                       } else {
                                         pokemonScreenController
-                                            .savePokemonFavorite(
-                                                );
+                                            .savePokemonFavorite();
                                       }
                                     },
                                     padding: EdgeInsets.zero,
@@ -150,7 +148,7 @@ class PokemonScreen extends StatelessWidget {
 
                           /**Start type button */
                           SizedBox(
-                            width: 50,
+                            //width: 50,
                             height: 22,
                             child: TypeButton(
                               type: Converter.convertPokemonTypeToPortugues(

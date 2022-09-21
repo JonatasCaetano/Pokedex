@@ -20,7 +20,7 @@ class MainAppScreen extends StatefulWidget {
 class _MainAppScreenState extends State<MainAppScreen> {
   List<Widget> screens = [
     const HomeScreen(),
-    FavoritePokemons(),
+    const FavoritePokemons(),
     const AccountScreen(),
   ];
 

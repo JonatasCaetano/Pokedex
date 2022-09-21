@@ -105,7 +105,8 @@ class CardSearch extends StatelessWidget {
                               showSearch(
                                 context: context,
                                 delegate: SearchScreen(
-                                    text: textEditingController.text),
+                                    text: textEditingController.text,
+                                    ),
                               );
                             },
                             style: ElevatedButton.styleFrom(

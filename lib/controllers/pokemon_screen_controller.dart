@@ -22,8 +22,8 @@ class PokemonScreenController extends GetxController {
   Future<void> getDescriptionPokemon({required var id}) async {
     loadDescription.value = true;
     update();
-    pokemon.description =
-        await _pokemonRepository.getDescriptionPokemon(id: id);
+    pokemon.description = await _pokemonRepository.getDescriptionPokemon(
+        species: pokemon.species);
     loadDescription.value = false;
     update();
   }

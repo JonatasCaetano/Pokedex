@@ -6,25 +6,8 @@ import 'package:pokedex/views/widgets/card_pokemon.dart';
 
 import '../../controllers/main_app_screen_controller.dart';
 
-// ignore: must_be_immutable
 class FavoritePokemons extends StatelessWidget {
-  FavoritePokemons({Key? key}) : super(key: key);
-
-  List types = [
-    'Fogo',
-    'Normal',
-    'Ar',
-    'Terra',
-    'Pedra',
-  ];
-
-  List colors = [
-    const Color(0xfff1afb2),
-    const Color(0xff49d0b0),
-    const Color(0xff9e81a9),
-    const Color(0xff2e7885),
-    const Color(0xff383332)
-  ];
+  const FavoritePokemons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +17,9 @@ class FavoritePokemons extends StatelessWidget {
             ? LoginScreen()
             : Scaffold(
                 body: mainAppScreenController.favoritesPokemon.isEmpty
-                    ? Container()
+                    ? const Center(
+                        child: Text('Nenhum Pokémon encontrado'),
+                      )
                     : GridView.builder(
                         padding: const EdgeInsets.all(8.0),
                         shrinkWrap: true,

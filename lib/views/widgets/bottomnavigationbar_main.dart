@@ -20,7 +20,8 @@ class BottomNavigationBarMain extends StatelessWidget {
         onTap: (index) {
           mainAppScreenController.updateIndexPage(index: index);
           if (isPokemonPage) {
-            Navigator.pop(context);
+            Navigator.of(context).popUntil((route) => route.isFirst);
+            //Navigator.pop(context);
           }
         },
         selectedItemColor: isPokemonPage ? const Color(0xffa2a9b0) : null,

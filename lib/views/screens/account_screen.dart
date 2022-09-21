@@ -60,7 +60,7 @@ class AccountScreen extends StatelessWidget {
                                 onPressed: () {
                                   mainAppScreenController.updateImageProfile();
                                 },
-                                icon: const Icon(Icons.more_vert),
+                                icon: const Icon(Icons.camera_alt),
                               ),
                             ),
                             mainAppScreenController.loadImage.isFalse
@@ -121,7 +121,13 @@ class AccountScreen extends StatelessWidget {
                       height: 16.0,
                     ),
                     mainAppScreenController.recentlySeen.isEmpty
-                        ? Container()
+                        ? SizedBox(
+                            width: MediaQuery.of(context).size.width,
+                            height: 400.0,
+                            child: const Center(
+                              child: Text('Nenhum Pokemon encontrado'),
+                            ),
+                          )
                         : GridView.builder(
                             padding: const EdgeInsets.all(8.0),
                             physics: const NeverScrollableScrollPhysics(),

@@ -31,7 +31,7 @@ class TypeButton extends StatelessWidget {
       },
       style: ElevatedButton.styleFrom(
         shadowColor: const Color(0xffea686d),
-        primary: color,
+        backgroundColor: color,
         elevation: 0.0,
         padding: const EdgeInsets.symmetric(horizontal: 1.0),
         shape: RoundedRectangleBorder(
