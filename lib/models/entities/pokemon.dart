@@ -7,22 +7,22 @@ class Pokemon {
   late String image;
   late String description;
   late String type;
+  late String species;
   late double life;
   late double defense;
   late double attack;
-  
+
   Pokemon({
     required this.id,
     required this.name,
     required this.image,
     required this.description,
     required this.type,
+    required this.species,
     required this.life,
     required this.defense,
     required this.attack,
   });
-
-  
 
   Pokemon copyWith({
     String? id,
@@ -30,6 +30,7 @@ class Pokemon {
     String? image,
     String? description,
     String? type,
+    String? species,
     double? life,
     double? defense,
     double? attack,
@@ -40,6 +41,7 @@ class Pokemon {
       image: image ?? this.image,
       description: description ?? this.description,
       type: type ?? this.type,
+      species: species ?? this.species,
       life: life ?? this.life,
       defense: defense ?? this.defense,
       attack: attack ?? this.attack,
@@ -53,6 +55,7 @@ class Pokemon {
       'image': image,
       'description': description,
       'type': type,
+      'species': species,
       'life': life,
       'defense': defense,
       'attack': attack,
@@ -66,6 +69,7 @@ class Pokemon {
       image: map['image'],
       description: map['description'],
       type: map['type'],
+      species: map['species'],
       life: map['life'],
       defense: map['defense'],
       attack: map['attack'],
@@ -74,37 +78,39 @@ class Pokemon {
 
   String toJson() => json.encode(toMap());
 
-  factory Pokemon.fromJson(String source) => Pokemon.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory Pokemon.fromJson(String source) =>
+      Pokemon.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'Pokemon(id: $id, name: $name, image: $image, description: $description, type: $type, life: $life, defense: $defense, attack: $attack)';
+    return 'Pokemon(id: $id, name: $name, image: $image, description: $description, type: $type, species: $species, life: $life, defense: $defense, attack: $attack)';
   }
 
   @override
   bool operator ==(covariant Pokemon other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.name == name &&
-      other.image == image &&
-      other.description == description &&
-      other.type == type &&
-      other.life == life &&
-      other.defense == defense &&
-      other.attack == attack;
+
+    return other.id == id &&
+        other.name == name &&
+        other.image == image &&
+        other.description == description &&
+        other.type == type &&
+        other.species == species &&
+        other.life == life &&
+        other.defense == defense &&
+        other.attack == attack;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      name.hashCode ^
-      image.hashCode ^
-      description.hashCode ^
-      type.hashCode ^
-      life.hashCode ^
-      defense.hashCode ^
-      attack.hashCode;
+        name.hashCode ^
+        image.hashCode ^
+        description.hashCode ^
+        type.hashCode ^
+        species.hashCode ^
+        life.hashCode ^
+        defense.hashCode ^
+        attack.hashCode;
   }
 }
