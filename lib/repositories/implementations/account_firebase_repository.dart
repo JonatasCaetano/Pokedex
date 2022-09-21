@@ -1,13 +1,19 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:get/get.dart';
+import 'package:pokedex/controllers/main_app_screen_controller.dart';
 import 'package:pokedex/models/entities/user_entity.dart';
 import 'package:pokedex/models/entities/pokemon.dart';
 import 'package:pokedex/repositories/interfaces/account_repository.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AccountFirebaseRepository extends AccountRepository {
-  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  final firebaseFirestore = FirebaseFirestore.instance;
+  final firebaseAuth = FirebaseAuth.instance;
+  final storage = FirebaseStorage.instance;
+  final ImagePicker _picker = ImagePicker();
 
   @override
   Future<UserEntity> createAccount(
@@ -204,6 +210,42 @@ class AccountFirebaseRepository extends AccountRepository {
         pokemons.add(pokemon);
       }
       return pokemons;
+    } catch (e) {
+      throw Exception();
+    }
+  }
+
+  @override
+  Future<void> updateImageProfile() async {
+    try {
+      User? user = firebaseAuth.currentUser;
+      if (user == null) {
+        throw Exception();
+      }
+      final xfile = await _picker.pickImage(
+        source: ImageSource.gallery,
+        maxHeight: 1920,
+        maxWidth: 1920,
+        imageQuality: 50,
+      );
+      final storageRef = FirebaseStorage.instance.ref();
+      final profileRef = storageRef
+          .child('images')
+          .child("${Timestamp.now().millisecondsSinceEpoch}.jpg");
+      File file = File(xfile!.path);
+      try {
+        await profileRef.putFile(file);
+      } catch (e) {
+        throw Exception();
+      }
+      try {
+        String url = await profileRef.getDownloadURL();
+        await firebaseFirestore.collection('users').doc(user.uid).update({
+          'image': url,
+        });
+      } catch (e) {
+        throw Exception();
+      }
     } catch (e) {
       throw Exception();
     }

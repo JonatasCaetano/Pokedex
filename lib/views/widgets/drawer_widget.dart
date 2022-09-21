@@ -24,20 +24,19 @@ class DrawerWidget extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 60.0,
                       backgroundColor: const Color(0xffffffff),
-                      child: mainAppScreenController.userEntity == null
+                      backgroundImage: mainAppScreenController.userEntity ==
+                                  null ||
+                              mainAppScreenController.userEntity!.image == null
+                          ? null
+                          : NetworkImage(
+                              mainAppScreenController.userEntity!.image!),
+                      child: mainAppScreenController.userEntity == null ||
+                              mainAppScreenController.userEntity!.image == null
                           ? SvgPicture.asset(
                               'assets/icons/account.svg',
                               width: 120,
                             )
-                          : mainAppScreenController.userEntity!.image == null
-                              ? SvgPicture.asset(
-                                  'assets/icons/account.svg',
-                                  width: 120,
-                                )
-                              : Image.network(
-                                  mainAppScreenController.userEntity!.image!,
-                                  width: 120,
-                                ),
+                          : null,
                     ),
                   ),
                 ),

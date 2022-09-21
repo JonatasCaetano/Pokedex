@@ -25,16 +25,17 @@ class AppBarMain extends StatelessWidget implements PreferredSize {
             child: CircleAvatar(
               radius: 12.0,
               backgroundColor: const Color(0xffffffff),
-              child: mainAppScreenController.userEntity == null
+              backgroundImage: mainAppScreenController.userEntity == null ||
+                      mainAppScreenController.userEntity!.image == null
+                  ? null
+                  : NetworkImage(mainAppScreenController.userEntity!.image!),
+              child: mainAppScreenController.userEntity == null ||
+                      mainAppScreenController.userEntity!.image == null
                   ? SvgPicture.asset(
                       'assets/icons/account.svg',
+                      width: 120,
                     )
-                  : mainAppScreenController.userEntity!.image == null
-                      ? SvgPicture.asset(
-                          'assets/icons/account.svg',
-                        )
-                      : Image.network(
-                          mainAppScreenController.userEntity!.image!),
+                  : null,
             ),
           )
         ],

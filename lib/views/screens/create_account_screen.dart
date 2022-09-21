@@ -24,11 +24,11 @@ class CreateAccountScreen extends StatelessWidget {
               child: TextFormField(
                 controller: name,
                 decoration: const InputDecoration(
-                  label: Text('Senha'),
+                  label: Text('Nome'),
                 ),
                 validator: (text) {
                   if (text == null || text.isEmpty || text.length < 6) {
-                    return "coloque uma seu nome";
+                    return "coloque seu nome";
                   } else {
                     return null;
                   }
@@ -70,13 +70,15 @@ class CreateAccountScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (keyTextFormField.currentState!.validate()) {
-                    mainAppScreenController.createAccount(
-                      name: name.text,
-                      email: email.text,
-                      password: password.text,
-                    );
+                    await mainAppScreenController
+                        .createAccount(
+                          name: name.text,
+                          email: email.text,
+                          password: password.text,
+                        )
+                        .then((value) => Navigator.pop(context));
                   }
                 },
                 child: const Text('criar conta'),

@@ -31,19 +31,49 @@ class AccountScreen extends StatelessWidget {
                           color: const Color(0xfff7f1f1),
                           borderRadius: BorderRadius.circular(20.0),
                         ),
-                        child: Center(
-                          child: CircleAvatar(
-                            radius: 60.0,
-                            backgroundColor: const Color(0xffffffff),
-                            child: mainAppScreenController.userEntity!.image ==
-                                    null
-                                ? SvgPicture.asset(
-                                    'assets/icons/account.svg',
-                                    width: 120,
+                        child: Stack(
+                          children: [
+                            Center(
+                              child: CircleAvatar(
+                                radius: 60.0,
+                                backgroundColor: const Color(0xffffffff),
+                                backgroundImage:
+                                    mainAppScreenController.userEntity!.image ==
+                                            null
+                                        ? null
+                                        : NetworkImage(mainAppScreenController
+                                            .userEntity!.image!),
+                                child:
+                                    mainAppScreenController.userEntity!.image ==
+                                            null
+                                        ? SvgPicture.asset(
+                                            'assets/icons/account.svg',
+                                            width: 120,
+                                          )
+                                        : null,
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 5.0,
+                              right: 5.0,
+                              child: IconButton(
+                                onPressed: () {
+                                  mainAppScreenController.updateImageProfile();
+                                },
+                                icon: const Icon(Icons.more_vert),
+                              ),
+                            ),
+                            mainAppScreenController.loadImage.isFalse
+                                ? Container()
+                                : Positioned(
+                                    bottom: 10.0,
+                                    child: SizedBox(
+                                      width: MediaQuery.of(context).size.width,
+                                      child: const Center(
+                                          child: CircularProgressIndicator()),
+                                    ),
                                   )
-                                : Image.network(
-                                    mainAppScreenController.userEntity!.image!),
-                          ),
+                          ],
                         ),
                       ),
                     ),

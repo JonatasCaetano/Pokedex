@@ -13,4 +13,5 @@ abstract class AccountRepository {
   Future<bool> checkIfPokemonIsFavorite({required Pokemon pokemon});
   Future<void> savePokemonRecentlySeen({required Pokemon pokemon});
   Future<List<Pokemon>> getPokemonsRecentlySeen();
+  Future<void> updateImageProfile();
 }

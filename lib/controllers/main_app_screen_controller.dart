@@ -22,6 +22,7 @@ class MainAppScreenController extends GetxController {
   var loadMostWanted = false.obs;
   var loadFavorites = false.obs;
   var loadRecently = false.obs;
+  var loadImage = false.obs;
   UserEntity? userEntity;
 
   MainAppScreenController() {
@@ -61,12 +62,18 @@ class MainAppScreenController extends GetxController {
     userEntity = await _accountRepository.createAccount(
         name: name, email: email, password: password);
     update();
+    getMostWantedPokemons();
+    getPokemonsFavorite();
+    getPokemonsRecentlySeen();
   }
 
   Future<void> login({required String email, required String password}) async {
     userEntity =
         await _accountRepository.logIn(email: email, password: password);
     update();
+    getMostWantedPokemons();
+    getPokemonsFavorite();
+    getPokemonsRecentlySeen();
   }
 
   Future<void> logOut() async {
@@ -96,6 +103,16 @@ class MainAppScreenController extends GetxController {
       recentlySeen.value = value.obs;
     });
     loadRecently.value = false;
+    update();
+  }
+
+  Future<void> updateImageProfile() async {
+    print('updateImageProfile');
+    loadImage.value = true;
+    update();
+    await _accountRepository.updateImageProfile();
+    await userIsLoggedIn();
+    loadImage.value = false;
     update();
   }
 }
