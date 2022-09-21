@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pokedex/views/widgets/card_pokemon.dart';
 
 import '../../controllers/main_app_screen_controller.dart';
 import 'login_screen.dart';
@@ -85,6 +86,32 @@ class AccountScreen extends StatelessWidget {
                             )),
                       ]),
                     ),
+                    const SizedBox(
+                      height: 16.0,
+                    ),
+                    mainAppScreenController.recentlySeen.isEmpty
+                        ? Container()
+                        : GridView.builder(
+                            padding: const EdgeInsets.all(8.0),
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount:
+                                mainAppScreenController.recentlySeen.length,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount:
+                                  MediaQuery.of(context).size.width ~/ 200,
+                              childAspectRatio: 159.53 / 110.94,
+                              crossAxisSpacing: 7,
+                              mainAxisSpacing: 11,
+                            ),
+                            itemBuilder: (context, index) {
+                              return CardPokemon(
+                                pokemon:
+                                    mainAppScreenController.recentlySeen[index],
+                              );
+                            },
+                          ),
                   ],
                 ),
               ),

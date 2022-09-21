@@ -17,15 +17,18 @@ class MainAppScreenController extends GetxController {
 
   RxList<Pokemon> mostWantedPokemon = <Pokemon>[].obs;
   RxList<Pokemon> favoritesPokemon = <Pokemon>[].obs;
+  RxList<Pokemon> recentlySeen = <Pokemon>[].obs;
   var indexPage = 0.obs;
   var loadMostWanted = false.obs;
   var loadFavorites = false.obs;
+  var loadRecently = false.obs;
   UserEntity? userEntity;
 
   MainAppScreenController() {
     userIsLoggedIn();
     getMostWantedPokemons();
     getPokemonsFavorite();
+    getPokemonsRecentlySeen();
   }
 
   void updateIndexPage({required index}) {
@@ -81,6 +84,18 @@ class MainAppScreenController extends GetxController {
       favoritesPokemon.value = value.obs;
     });
     loadFavorites.value = false;
+    update();
+  }
+
+  Future<void> getPokemonsRecentlySeen() async {
+    print('getPokemonsRecentlySeen');
+    loadRecently.value = true;
+    update();
+    recentlySeen.clear();
+    _accountRepository.getPokemonsRecentlySeen().then((value) {
+      recentlySeen.value = value.obs;
+    });
+    loadRecently.value = false;
     update();
   }
 }

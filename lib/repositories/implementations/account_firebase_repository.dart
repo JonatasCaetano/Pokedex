@@ -168,12 +168,44 @@ class AccountFirebaseRepository extends AccountRepository {
   }
 
   @override
-  Future<void> savePokemonRecentlySeen({required Pokemon pokemon}) {
-    throw UnimplementedError();
+  Future<void> savePokemonRecentlySeen({required Pokemon pokemon}) async {
+    try {
+      User? user = firebaseAuth.currentUser;
+      if (user == null) {
+        throw Exception();
+      }
+      await firebaseFirestore
+          .collection('users')
+          .doc(user.uid)
+          .collection('recently')
+          .doc(pokemon.id)
+          .set(pokemon.toMap());
+    } catch (e) {
+      throw Exception();
+    }
   }
 
   @override
-  Future<List<Pokemon>> getPokemonsRecentlySeen() {
-    throw UnimplementedError();
+  Future<List<Pokemon>> getPokemonsRecentlySeen() async {
+    List<Pokemon> pokemons = [];
+    try {
+      User? user = firebaseAuth.currentUser;
+      if (user == null) {
+        throw Exception();
+      }
+      final queryDocumentSnapshot = await firebaseFirestore
+          .collection('users')
+          .doc(user.uid)
+          .collection('recently')
+          .get();
+      for (DocumentSnapshot documentSnapshot in queryDocumentSnapshot.docs) {
+        Pokemon pokemon =
+            Pokemon.fromMap(documentSnapshot.data() as Map<String, dynamic>);
+        pokemons.add(pokemon);
+      }
+      return pokemons;
+    } catch (e) {
+      throw Exception();
+    }
   }
 }

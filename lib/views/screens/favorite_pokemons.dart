@@ -33,22 +33,27 @@ class FavoritePokemons extends StatelessWidget {
         return mainAppScreenController.userEntity == null
             ? LoginScreen()
             : Scaffold(
-                body: GridView.builder(
-                  padding: const EdgeInsets.all(8.0),
-                  shrinkWrap: true,
-                  itemCount: mainAppScreenController.favoritesPokemon.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: MediaQuery.of(context).size.width ~/ 200,
-                    childAspectRatio: 159.53 / 110.94,
-                    crossAxisSpacing: 7,
-                    mainAxisSpacing: 11,
-                  ),
-                  itemBuilder: (context, index) {
-                    return CardPokemon(
-                      pokemon: mainAppScreenController.favoritesPokemon[index],
-                    );
-                  },
-                ),
+                body: mainAppScreenController.favoritesPokemon.isEmpty
+                    ? Container()
+                    : GridView.builder(
+                        padding: const EdgeInsets.all(8.0),
+                        shrinkWrap: true,
+                        itemCount:
+                            mainAppScreenController.favoritesPokemon.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount:
+                              MediaQuery.of(context).size.width ~/ 200,
+                          childAspectRatio: 159.53 / 110.94,
+                          crossAxisSpacing: 7,
+                          mainAxisSpacing: 11,
+                        ),
+                        itemBuilder: (context, index) {
+                          return CardPokemon(
+                            pokemon:
+                                mainAppScreenController.favoritesPokemon[index],
+                          );
+                        },
+                      ),
               );
       },
     );

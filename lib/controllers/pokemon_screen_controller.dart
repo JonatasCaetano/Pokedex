@@ -16,6 +16,7 @@ class PokemonScreenController extends GetxController {
   PokemonScreenController({required this.pokemon}) {
     getDescriptionPokemon(id: pokemon.id);
     checkIfPokemonIsFavorite();
+    savePokemonRecentlySeen();
   }
 
   Future<void> getDescriptionPokemon({required var id}) async {
@@ -57,6 +58,15 @@ class PokemonScreenController extends GetxController {
         update();
       });
       mainAppScreenController.getPokemonsFavorite();
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> savePokemonRecentlySeen() async {
+    try {
+      await _accountRepository.savePokemonRecentlySeen(pokemon: pokemon);
+      mainAppScreenController.getPokemonsRecentlySeen();
     } catch (e) {
       print(e);
     }
