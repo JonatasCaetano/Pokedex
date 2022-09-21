@@ -48,6 +48,7 @@ class Pokeapi implements PokemonRepository {
           image: map['sprites']['other']['official-artwork']['front_default'],
           description: '',
           type: map['types'][0]['type']['name'].toString(),
+          species: map['species']['name'],
           life: double.parse(map['stats'][0]['base_stat'].toString()),
           defense: double.parse(map['stats'][1]['base_stat'].toString()),
           attack: double.parse(map['stats'][2]['base_stat'].toString()),
@@ -62,9 +63,9 @@ class Pokeapi implements PokemonRepository {
   }
 
   @override
-  Future<String> getDescriptionPokemon({required var id}) async {
+  Future<String> getDescriptionPokemon({required var species}) async {
     try {
-      var response = await Dio().get('${url}pokemon-species/$id');
+      var response = await Dio().get('${url}pokemon-species/$species');
       if (response.statusCode == 200) {
         final map = response.data;
         List<dynamic> list = map['flavor_text_entries'];
