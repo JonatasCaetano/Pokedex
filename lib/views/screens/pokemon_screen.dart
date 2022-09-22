@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -11,7 +12,6 @@ import 'package:pokedex/views/widgets/bottomnavigationbar_main.dart';
 import 'package:pokedex/views/widgets/pokemon_attribute.dart';
 import 'package:pokedex/views/widgets/pokemon_container.dart';
 import 'package:pokedex/views/widgets/type_button.dart';
-
 import '../../models/entities/pokemon.dart';
 
 // ignore: must_be_immutable
@@ -130,7 +130,9 @@ class PokemonScreen extends StatelessWidget {
                                 SizedBox(
                                   width: 25,
                                   child: IconButton(
-                                    onPressed: () {},
+                                    onPressed: (){
+                                      pokemonScreenController.sharedPokemon();
+                                    },
                                     padding: EdgeInsets.zero,
                                     icon: const Icon(
                                       Icons.share_outlined,

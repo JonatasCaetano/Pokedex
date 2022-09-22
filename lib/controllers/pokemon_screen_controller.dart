@@ -1,4 +1,6 @@
+
 import 'package:get/get.dart';
+import 'package:social_share/social_share.dart';
 
 import '../models/entities/pokemon.dart';
 import '../repositories/dao_factory.dart';
@@ -70,5 +72,11 @@ class PokemonScreenController extends GetxController {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<void> sharedPokemon() async {
+    SocialShare.shareOptions(
+      "Pokémon: \n Nome: ${pokemon.name} \n code: ${pokemon.id} \n vida: ${pokemon.life} \n ataque: ${pokemon.attack} \n defesa: ${pokemon.defense} \n Descrição: ${pokemon.description}",
+    );
   }
 }
