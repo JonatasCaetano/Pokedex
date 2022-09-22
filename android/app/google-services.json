@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "309526246338",
+    "project_id": "pokemon-a0a7a",
+    "storage_bucket": "pokemon-a0a7a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309526246338:android:286592aba19cfa4f12dc5b",
+        "android_client_info": {
+          "package_name": "com.jonatas.pokedex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309526246338-9qvhreoarc2cbejead644v5lbe0tff5d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBArMSgKJ_IWTNWiacWWzk8XuBaXjPNUE4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309526246338-9qvhreoarc2cbejead644v5lbe0tff5d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
