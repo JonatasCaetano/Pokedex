@@ -34,7 +34,7 @@ class PokemonScreen extends StatelessWidget {
         ),
       ),
       body: GetBuilder<PokemonScreenController>(
-        init: PokemonScreenController(pokemon: pokemon),
+        init: PokemonScreenController(pokemon: pokemon, context: context),
         global: false,
         builder: (pokemonScreenController) => SingleChildScrollView(
           child: Column(
@@ -106,10 +106,12 @@ class PokemonScreen extends StatelessWidget {
                                       if (pokemonScreenController
                                           .isFavorite.isTrue) {
                                         pokemonScreenController
-                                            .removePokemonFavorite();
+                                            .removePokemonFavorite(
+                                                context: context);
                                       } else {
                                         pokemonScreenController
-                                            .savePokemonFavorite();
+                                            .savePokemonFavorite(
+                                                context: context);
                                       }
                                     },
                                     padding: EdgeInsets.zero,
@@ -130,7 +132,7 @@ class PokemonScreen extends StatelessWidget {
                                 SizedBox(
                                   width: 25,
                                   child: IconButton(
-                                    onPressed: (){
+                                    onPressed: () {
                                       pokemonScreenController.sharedPokemon();
                                     },
                                     padding: EdgeInsets.zero,

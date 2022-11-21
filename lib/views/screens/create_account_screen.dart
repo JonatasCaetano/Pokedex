@@ -76,6 +76,10 @@ class CreateAccountScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  maximumSize: const Size.fromWidth(100.0),
+                  backgroundColor: const Color(0xffEa686D),
+                ),
                 onPressed: () async {
                   if (keyTextFormField.currentState!.validate()) {
                     await mainAppScreenController

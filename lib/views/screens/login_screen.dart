@@ -65,6 +65,10 @@ class LoginScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  maximumSize: const Size.fromWidth(100.0),
+                  backgroundColor: const Color(0xffEa686D),
+                ),
                 onPressed: () {
                   if (keyTextFormField.currentState!.validate()) {
                     mainAppScreenController.login(
@@ -85,6 +89,7 @@ class LoginScreen extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   maximumSize: const Size.fromWidth(100.0),
+                  backgroundColor: const Color(0xffEa686D),
                 ),
                 onPressed: () {
                   Routes.toScreen(

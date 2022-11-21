@@ -1,7 +1,6 @@
-
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:social_share/social_share.dart';
-
 import '../models/entities/pokemon.dart';
 import '../repositories/dao_factory.dart';
 import 'main_app_screen_controller.dart';
@@ -15,10 +14,11 @@ class PokemonScreenController extends GetxController {
   var loadDescription = false.obs;
   var isFavorite = false.obs;
 
-  PokemonScreenController({required this.pokemon}) {
+  PokemonScreenController(
+      {required this.pokemon, required BuildContext context}) {
     getDescriptionPokemon(id: pokemon.id);
     checkIfPokemonIsFavorite();
-    savePokemonRecentlySeen();
+    savePokemonRecentlySeen(context: context);
   }
 
   Future<void> getDescriptionPokemon({required var id}) async {
@@ -34,10 +34,9 @@ class PokemonScreenController extends GetxController {
     isFavorite.value =
         await _accountRepository.checkIfPokemonIsFavorite(pokemon: pokemon);
     update();
-    print('isFavorite: $isFavorite');
   }
 
-  Future<void> savePokemonFavorite() async {
+  Future<void> savePokemonFavorite({required BuildContext context}) async {
     try {
       await _accountRepository
           .savePokemonFavorite(pokemon: pokemon)
@@ -47,11 +46,12 @@ class PokemonScreenController extends GetxController {
       });
       mainAppScreenController.getPokemonsFavorite();
     } catch (e) {
-      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Erro ao salvar Pokemon')));
     }
   }
 
-  Future<void> removePokemonFavorite() async {
+  Future<void> removePokemonFavorite({required BuildContext context}) async {
     try {
       await _accountRepository
           .removePokemonFavorite(pokemon: pokemon)
@@ -61,16 +61,18 @@ class PokemonScreenController extends GetxController {
       });
       mainAppScreenController.getPokemonsFavorite();
     } catch (e) {
-      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Erro ao remover Pokemon')));
     }
   }
 
-  Future<void> savePokemonRecentlySeen() async {
+  Future<void> savePokemonRecentlySeen({required BuildContext context}) async {
     try {
       await _accountRepository.savePokemonRecentlySeen(pokemon: pokemon);
       mainAppScreenController.getPokemonsRecentlySeen();
     } catch (e) {
-      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Erro ao salvar Pokemon')));
     }
   }
 

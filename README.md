@@ -46,16 +46,16 @@
 
 ## 🖼️ Imagens do Aplicativo
 
-![Splash Screen da Pokedéx](https://user-images.githubusercontent.com/59484665/191779822-fe62d095-8469-4576-9968-7f07e11aabd3.png)
-![Tela home da Pokedéx](https://user-images.githubusercontent.com/59484665/191779850-4be8eba3-2218-4d81-bf9f-0c44c61a1c0f.png)
-![Tela favoritos da Pokedéx](https://user-images.githubusercontent.com/59484665/191779893-dc81d281-4f13-4e04-a427-380f050ab31e.png)
-![Tela de pesquisa por pokemons](https://user-images.githubusercontent.com/59484665/191779931-cb09e3b3-3001-4bda-bc3b-249292cc94c9.png)
-![Tela do Pokemon](https://user-images.githubusercontent.com/59484665/191779976-3b9e3ebc-2a6d-4901-983f-8dcc31d6b200.png)
-![Drawer com as opções de menu](https://user-images.githubusercontent.com/59484665/191780026-c144992e-6039-44ac-ba7b-0f87e99f807a.png)
-![Opções de compartilhamento de Pokemon](https://user-images.githubusercontent.com/59484665/191780058-28993ffb-5980-4a1f-9b04-01bdd6a206f8.png)
-![Tela de login](https://user-images.githubusercontent.com/59484665/191781833-038f4907-95ed-4297-b4e2-a0d65558354b.png)
-
-
+<div style="display: inline_block">
+<img src="https://user-images.githubusercontent.com/59484665/191779822-fe62d095-8469-4576-9968-7f07e11aabd3.png" width="200"> 
+<img src="https://user-images.githubusercontent.com/59484665/191779850-4be8eba3-2218-4d81-bf9f-0c44c61a1c0f.png" width="200"> 
+<img src="https://user-images.githubusercontent.com/59484665/191779893-dc81d281-4f13-4e04-a427-380f050ab31e.png" width="200"> 
+<img src="https://user-images.githubusercontent.com/59484665/191779931-cb09e3b3-3001-4bda-bc3b-249292cc94c9.png" width="200"> 
+<img src="https://user-images.githubusercontent.com/59484665/191779976-3b9e3ebc-2a6d-4901-983f-8dcc31d6b200.png" width="200"> 
+<img src="https://user-images.githubusercontent.com/59484665/191780026-c144992e-6039-44ac-ba7b-0f87e99f807a.png" width="200"> 
+<img src="https://user-images.githubusercontent.com/59484665/191780058-28993ffb-5980-4a1f-9b04-01bdd6a206f8.png" width="200"> 
+<img src="https://user-images.githubusercontent.com/59484665/203159143-5f5dfb9b-e6ed-4767-bd49-6092b20848d2.png" width="200"> 
+</div>
 
 ## 🧑 Autores
 

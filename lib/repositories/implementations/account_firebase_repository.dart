@@ -2,8 +2,6 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:get/get.dart';
-import 'package:pokedex/controllers/main_app_screen_controller.dart';
 import 'package:pokedex/models/entities/user_entity.dart';
 import 'package:pokedex/models/entities/pokemon.dart';
 import 'package:pokedex/repositories/interfaces/account_repository.dart';
@@ -32,7 +30,6 @@ class AccountFirebaseRepository extends AccountRepository {
           .collection('users')
           .doc(userCredential.user!.uid)
           .set(user.toMap());
-      print(user);
       return user;
     } catch (e) {
       throw Exception();
@@ -50,7 +47,6 @@ class AccountFirebaseRepository extends AccountRepository {
           documentSnapshot.data() as Map<String, dynamic>;
 
       UserEntity userEntity = UserEntity.fromMap(map);
-      print(userEntity);
       return userEntity;
     } else {
       throw Exception();
@@ -70,7 +66,6 @@ class AccountFirebaseRepository extends AccountRepository {
       Map<String, dynamic> map =
           documentSnapshot.data() as Map<String, dynamic>;
       UserEntity userEntity = UserEntity.fromMap(map);
-      print(userEntity);
       return userEntity;
     } catch (e) {
       throw Exception();
