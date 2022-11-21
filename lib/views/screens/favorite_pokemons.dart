@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pokedex/models/entities/pokemon.dart';
 import 'package:pokedex/views/screens/login_screen.dart';
 import 'package:pokedex/views/widgets/card_pokemon.dart';
 

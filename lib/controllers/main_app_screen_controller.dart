@@ -83,7 +83,6 @@ class MainAppScreenController extends GetxController {
   }
 
   Future<void> getPokemonsFavorite() async {
-    print('getPokemonsFavorite');
     loadFavorites.value = true;
     update();
     favoritesPokemon.clear();
@@ -95,7 +94,6 @@ class MainAppScreenController extends GetxController {
   }
 
   Future<void> getPokemonsRecentlySeen() async {
-    print('getPokemonsRecentlySeen');
     loadRecently.value = true;
     update();
     recentlySeen.clear();
@@ -107,7 +105,6 @@ class MainAppScreenController extends GetxController {
   }
 
   Future<void> updateImageProfile() async {
-    print('updateImageProfile');
     loadImage.value = true;
     update();
     await _accountRepository.updateImageProfile();

@@ -95,8 +95,6 @@ class SearchScreen extends SearchDelegate<String> {
           .where((element) =>
               element.toLowerCase().startsWith(query.toLowerCase()))
           .toList();
-      print('suggestions: $suggestions');
-      print('names: $names');
       return ListView.builder(
         itemCount: names.length,
         itemBuilder: ((context, index) {
