@@ -53,8 +53,7 @@
 ![Tela do Pokemon](https://user-images.githubusercontent.com/59484665/191779976-3b9e3ebc-2a6d-4901-983f-8dcc31d6b200.png)
 ![Drawer com as opções de menu](https://user-images.githubusercontent.com/59484665/191780026-c144992e-6039-44ac-ba7b-0f87e99f807a.png)
 ![Opções de compartilhamento de Pokemon](https://user-images.githubusercontent.com/59484665/191780058-28993ffb-5980-4a1f-9b04-01bdd6a206f8.png)
-![Tela de login](https://user-images.githubusercontent.com/59484665/191781833-038f4907-95ed-4297-b4e2-a0d65558354b.png)
-
+![Tela de login](https://user-images.githubusercontent.com/59484665/203159143-5f5dfb9b-e6ed-4767-bd49-6092b20848d2.png)
 
 
 ## 🧑 Autores
